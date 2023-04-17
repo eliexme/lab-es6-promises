@@ -128,6 +128,12 @@ function broccoliImg(){
   document.querySelector('#broccoliImg').style.display = 'block'
 }
 
+function sproutsImg(){
+  document.querySelector('#brusselsSproutsImg').style.display = 'block'
+}
+
+
+
 
 
 
@@ -138,15 +144,14 @@ const loopOverBrusselSteps = async ()=>{
     promisesBrussels.push(obtainInstruction('brusselsSprouts',index))
   })
   
-  Promise.all(promisesBrussels).then((step)=>{
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[0]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[1]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[2]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[3]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[4]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[5]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[6]}</li>`;
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[7]}</li>`;
+  Promise.all(promisesBrussels).then((steps)=>{
+    /*for(let i=0; i<promisesBrussels.length; i++){
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[i]}</li>`
+    }*/
+    steps.forEach((step) =>{
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>${step}</li>`
+    })
+    sproutsImg()
   })
 }
 
